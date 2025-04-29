@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image:url(Music\Playlists\signature_1_100.jpg.jpeg);
+            background-size: cover;
+            background-position: center center;
+            background-color: #f4f4f9;
+            color: #e02626;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(242, 3, 3, 0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #5b2346;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: #3b48d7;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c6216e;
+        }
+        .prediction {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>California Housing Price Prediction</h1>
+    <div class="form-container">
+        <form method="POST">
+            <label for="MedInc">Median Income:</label>
+            <input type="number" id="MedInc" name="MedInc" step="any" required>
+            
+            <label for="HouseAge">House Age:</label>
+            <input type="number" id="HouseAge" name="HouseAge" step="any" required>
+            
+            <label for="AveRooms">Average Rooms:</label>
+            <input type="number" id="AveRooms" name="AveRooms" step="any" required>
+            
+            <label for="AveOccup">Average Occupants:</label>
+            <input type="number" id="AveOccup" name="AveOccup" step="any" required>
+            
+            <label for="Latitude">Latitude:</label>
+            <input type="number" id="Latitude" name="Latitude" step="any" required>
+            
+            <label for="Longitude">Longitude:</label>
+            <input type="number" id="Longitude" name="Longitude" step="any" required>
+            
+            <label for="MedHouseVal">Median House Value:</label>
+            <input type="number" id="MedHouseVal" name="MedHouseVal" step="any" required>
+            
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="prediction">
+                <p>Predicted House Price: ${{ '{:,.2f}'.format(prediction) }}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
